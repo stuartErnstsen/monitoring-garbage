@@ -11,7 +11,6 @@ const rollbar = new Rollbar({
     captureUnhandledRejections: true
 })
 
-app.use(rollbar.errorHandler())
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './client/index.html'))
@@ -34,5 +33,8 @@ app.post('/api/students', (req, res) => {
 })
 
 const port = process.env.PORT || 5656
+
+
+app.use(rollbar.errorHandler())
 
 app.listen(port, () => console.log(`Hippity Hoppity your server is poppening on: ${port}`))
