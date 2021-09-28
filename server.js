@@ -11,9 +11,26 @@ const rollbar = new Rollbar({
     captureUnhandledRejections: true
 })
 
+app.use(rollbar.errorHandler())
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './client/index.html'))
     rollbar.info('You have monitored serving your html successfully!')
+})
+
+//STUDENT STUFF!! --------------------------------------------------------------------------
+
+const students = []
+
+app.post('/api/students', (req, res) => {
+    const { name } = req.body
+    name = name.trim()
+
+    students.push(name)
+
+
+
+    res.status(200).send(students)
 })
 
 const port = process.env.PORT || 5656
