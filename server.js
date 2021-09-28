@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 const students = []
 
 app.post('/api/students', (req, res) => {
-    const { name } = req.body
+    let { name } = req.body
     name = name.trim()
 
     students.push(name)
