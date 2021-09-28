@@ -29,7 +29,7 @@ app.post('/api/students', (req, res) => {
     students.push(name)
 
 
-
+    rollbar.log('Student added successfully', { author: 'Stuart' })
     res.status(200).send(students)
 })
 
